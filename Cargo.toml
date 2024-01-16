@@ -1,0 +1,14 @@
+[package]
+name = "row2pgcopy"
+version = "0.1.0"
+edition = "2021"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[dependencies.serde]
+version = "1.0"
+default-features = false
+features = [
+	"std",
+]
