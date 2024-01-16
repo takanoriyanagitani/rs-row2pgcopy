@@ -3,3 +3,5 @@
 pub mod header;
 pub mod item;
 pub mod trailer;
+
+pub mod time;
