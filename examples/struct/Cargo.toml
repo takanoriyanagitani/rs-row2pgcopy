@@ -1,0 +1,22 @@
+[package]
+name = "example-struct"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release-wasi]
+inherits = "release"
+lto = true
+strip = true
+opt-level = 's'
+codegen-units = 23
+
+[dependencies.row2pgcopy]
+path = "../.."
+
+[dependencies.serde]
+version = "1.0.195"
+default-features = false
+features = [
+	"std",
+	"derive",
+]
