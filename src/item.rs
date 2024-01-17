@@ -374,12 +374,9 @@ where
         todo!()
     }
 
-    /// assuming Vec<u8>
+    /// serialize as an i16 value
     fn serialize_u8(self, i: u8) -> Result<Self::Ok, Self::Error> {
-        self.wtr
-            .write_all(&[i])
-            .map_err(|e| Error::WriteError(format!("unable to write a byte: {e}")))?;
-        Ok(())
+        self.serialize_i16(i.into())
     }
 
     /// serialize as an i32 value
@@ -471,11 +468,9 @@ where
         val.serialize(self)
     }
 
-    /// assuming Vec<u8>
-    fn serialize_seq(self, len: Option<usize>) -> Result<Self::SerializeSeq, Self::Error> {
-        let sz: i32 = len.unwrap_or(0) as i32;
-        self.serialize_col_size(sz)?;
-        Ok(self)
+    /// the use of native Vec is unsupported.
+    fn serialize_seq(self, _len: Option<usize>) -> Result<Self::SerializeSeq, Self::Error> {
+        todo!()
     }
 
     /// the use of native Tuple is unsupported.

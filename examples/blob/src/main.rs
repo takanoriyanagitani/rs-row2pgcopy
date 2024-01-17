@@ -1,11 +1,12 @@
 use std::io;
 use std::process::ExitCode;
 
+use row2pgcopy::blob::PgBlob;
 use row2pgcopy::header::HeaderWriter;
 
 #[derive(serde::Serialize)]
 struct Row {
-    id: Vec<u8>,
+    dat: PgBlob,
 }
 
 fn sub<W>(mut wtr: W) -> Result<(), String>
@@ -16,7 +17,14 @@ where
     hwtr.write_header(wtr.by_ref())
         .map_err(|e| format!("Unable to write a pgcopy header: {e}"))?;
 
-    let rows = vec![Row { id: b"3776".into() }, Row { id: b"fuji".into() }];
+    let rows = vec![
+        Row {
+            dat: PgBlob::from("3776"),
+        },
+        Row {
+            dat: PgBlob::from("fuji"),
+        },
+    ];
     {
         let mut w = wtr.by_ref();
 
