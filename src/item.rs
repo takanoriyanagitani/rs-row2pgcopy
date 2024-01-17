@@ -52,6 +52,7 @@ pgnum_create!(i64, 0x14);
 pgnum_create!(f32, 0x02bc);
 pgnum_create!(f64, 0x02bd);
 
+#[derive(Clone)]
 pub struct PgNumArray<T>(pub Vec<T>)
 where
     T: PgNum;
