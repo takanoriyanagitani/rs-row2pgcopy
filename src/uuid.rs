@@ -12,3 +12,9 @@ impl Serialize for Uuid {
         ser.serialize_bytes(s)
     }
 }
+
+impl From<u128> for Uuid {
+    fn from(u: u128) -> Self {
+        Self(u)
+    }
+}
