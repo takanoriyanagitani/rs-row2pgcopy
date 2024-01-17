@@ -5,5 +5,6 @@ pub mod item;
 pub mod trailer;
 
 pub mod time;
+pub mod uuid;
 
 pub mod blob;
