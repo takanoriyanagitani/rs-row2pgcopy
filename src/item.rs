@@ -11,8 +11,6 @@ use serde::ser::{SerializeTuple, SerializeTupleStruct, SerializeTupleVariant};
 
 use serde::{Serialize, Serializer};
 
-pub struct Int2Array(Vec<i16>);
-
 pub fn write_col_cnt<W>(mut wtr: W, cnt: i16) -> Result<(), io::Error>
 where
     W: io::Write,
@@ -54,7 +52,7 @@ pgnum_create!(i64, 0x14);
 pgnum_create!(f32, 0x02bc);
 pgnum_create!(f64, 0x02bd);
 
-pub struct PgNumArray<T>(Vec<T>)
+pub struct PgNumArray<T>(pub Vec<T>)
 where
     T: PgNum;
 
@@ -88,7 +86,7 @@ where
             let b: [u8; 4] = typ_num.to_be_bytes();
             buf.extend_from_slice(&b);
 
-            let isz: i32 = sz as i32;
+            let isz: i32 = ecnt as i32;
             let bsz: [u8; 4] = isz.to_be_bytes();
             buf.extend_from_slice(&bsz);
 
