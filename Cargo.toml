@@ -26,3 +26,21 @@ default-features = false
 features = [
 	"std",
 ]
+
+[dependencies.time]
+version = "0.3"
+optional = true
+default-features = false
+features = [
+	"std",
+	"parsing",
+]
+
+[features]
+default = [
+	"time_primitive",
+]
+
+time_primitive = [
+	"time",
+]
