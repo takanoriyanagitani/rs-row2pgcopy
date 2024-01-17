@@ -1,7 +1,11 @@
 [package]
 name = "row2pgcopy"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
+description = "Simple Serializer for PGCOPY"
+license = "Apache-2.0"
+documentation = "https://docs.rs/crate/row2pgcopy"
+repository = "https://github.com/takanoriyanagitani/rs-row2pgcopy"
 
 [lints.rust]
 unsafe_code = "forbid"
