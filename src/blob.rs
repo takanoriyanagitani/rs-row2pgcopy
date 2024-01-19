@@ -1,5 +1,6 @@
 use serde::{Serialize, Serializer};
 
+/// A Blob for PostgreSQL
 pub struct PgBlob {
     dat: Vec<u8>,
 }
