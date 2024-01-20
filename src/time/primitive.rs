@@ -7,6 +7,7 @@ use bytes::BytesMut;
 
 use time::{Date, OffsetDateTime, PrimitiveDateTime, Time};
 
+/// A timestamp object for postgresql TIMESTAMP WITHOUT TIME ZONE
 pub struct Timestamp(PrimitiveDateTime);
 
 impl Serialize for Timestamp {
