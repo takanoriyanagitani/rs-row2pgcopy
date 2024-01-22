@@ -58,6 +58,15 @@ pub struct PgNumArray<T>(pub Vec<T>)
 where
     T: PgNum;
 
+impl<T> From<Vec<T>> for PgNumArray<T>
+where
+    T: PgNum,
+{
+    fn from(vt: Vec<T>) -> Self {
+        PgNumArray(vt)
+    }
+}
+
 impl<T> Serialize for PgNumArray<T>
 where
     T: PgNum,
@@ -521,5 +530,36 @@ where
         _len: usize,
     ) -> Result<Self::SerializeStructVariant, Self::Error> {
         unimplemented!()
+    }
+}
+
+#[cfg(test)]
+mod test_item {
+    mod pg_num_array {
+        mod from {
+            use crate::item::PgNumArray;
+
+            #[test]
+            fn empty4i() {
+                let pna3: PgNumArray<i16> = PgNumArray::from(vec![]);
+                assert_eq!(0, pna3.0.len());
+            }
+
+            #[test]
+            fn single5i() {
+                let pna3: PgNumArray<i32> = PgNumArray::from(vec![299792458]);
+                assert_eq!(1, pna3.0.len());
+                let raw: i32 = pna3.0[0];
+                assert_eq!(299792458, raw);
+            }
+
+            #[test]
+            fn multi6f() {
+                let pna3: PgNumArray<f64> = PgNumArray::from(vec![3.776]);
+                assert_eq!(1, pna3.0.len());
+                let raw: f64 = pna3.0[0];
+                assert_eq!(3.776, raw);
+            }
+        }
     }
 }
