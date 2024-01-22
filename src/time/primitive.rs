@@ -52,3 +52,36 @@ impl TryFrom<&str> for Timestamp {
         Ok(o.into())
     }
 }
+
+#[cfg(test)]
+mod test_primitive {
+    mod tztest {
+        use std::time::SystemTime;
+
+        use time::{OffsetDateTime, PrimitiveDateTime};
+
+        use crate::time::primitive::Timestamp;
+
+        #[test]
+        fn epoch_utc() {
+            let e: SystemTime = SystemTime::UNIX_EPOCH;
+            let o: OffsetDateTime = e.into();
+            let t: Timestamp = o.into();
+            let p: PrimitiveDateTime = t.0;
+            let (h, _, _) = p.as_hms();
+            assert_eq!(0, h);
+        }
+
+        #[test]
+        fn epoch_tokyo() {
+            let e: SystemTime = SystemTime::UNIX_EPOCH;
+            let o: OffsetDateTime = e.into();
+            let tk = time::macros::offset!(+09:00);
+            let ot: OffsetDateTime = o.to_offset(tk);
+            let t: Timestamp = ot.into();
+            let p: PrimitiveDateTime = t.0;
+            let (h, _, _) = p.as_hms();
+            assert_eq!(9, h);
+        }
+    }
+}
