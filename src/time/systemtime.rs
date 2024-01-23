@@ -10,6 +10,7 @@ use postgres_types::{ToSql, Type};
 use bytes::BytesMut;
 
 /// A timestamp object for postgresql TIMESTAMP WITH TIME ZONE
+#[derive(Debug)]
 pub struct Timestampz(SystemTime);
 
 impl Serialize for Timestampz {

@@ -53,7 +53,7 @@ pgnum_create!(f32, 0x02bc);
 pgnum_create!(f64, 0x02bd);
 
 /// An array of postgresql numbers
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct PgNumArray<T>(pub Vec<T>)
 where
     T: PgNum;

@@ -1,5 +1,6 @@
 use serde::{Serialize, Serializer};
 
+#[derive(Debug)]
 pub struct Uuid(pub u128);
 
 impl Serialize for Uuid {
