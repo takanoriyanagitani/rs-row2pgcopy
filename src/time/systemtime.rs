@@ -1,3 +1,5 @@
+use core::time::Duration;
+
 use std::time::SystemTime;
 
 use serde::ser::Error;
@@ -27,5 +29,15 @@ impl Serialize for Timestampz {
 impl From<SystemTime> for Timestampz {
     fn from(st: SystemTime) -> Self {
         Self(st)
+    }
+}
+
+impl TryFrom<Duration> for Timestampz {
+    type Error = String;
+    fn try_from(elapsed_from_epoch: Duration) -> Result<Self, Self::Error> {
+        let base: SystemTime = SystemTime::UNIX_EPOCH;
+        let o: Option<SystemTime> = base.checked_add(elapsed_from_epoch);
+        o.map(|s| s.into())
+            .ok_or_else(|| String::from("invalid duration"))
     }
 }

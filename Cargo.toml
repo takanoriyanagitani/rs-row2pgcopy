@@ -1,6 +1,6 @@
 [package]
 name = "row2pgcopy"
-version = "1.4.1"
+version = "1.5.0"
 edition = "2021"
 description = "Simple Serializer for PGCOPY"
 license = "Apache-2.0"
