@@ -1,5 +1,6 @@
 use std::io;
 
+/// Writes a PGCOPY header(e.g, PGCOPY\n\xff\d\a\0....)
 pub trait HeaderWriter {
     fn write_header<W>(&self, wtr: W) -> Result<(), io::Error>
     where
