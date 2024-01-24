@@ -20,10 +20,15 @@ where
     Ok(())
 }
 
+/// A number type which can be used for an item of an 1D array.
 pub trait PgNum {
+    /// Extends a buf by serialized bytes(network byte order)
     fn to_buf(&self, buf: &mut Vec<u8>);
 
+    /// A type number. e.g, i16 -> 0x15, i32 -> 0x17, f32 -> 0x02bc, ...
     fn type_num() -> u32;
+
+    /// The size of a number type. e.g, i16 -> 2, f64 -> 8, ...
     fn size() -> usize;
 }
 
