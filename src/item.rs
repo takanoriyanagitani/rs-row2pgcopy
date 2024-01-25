@@ -123,6 +123,7 @@ where
     }
 }
 
+/// Writes a val to a wtr
 pub fn to_writer<W, T>(wtr: W, val: &T) -> Result<(), Error>
 where
     W: io::Write,
