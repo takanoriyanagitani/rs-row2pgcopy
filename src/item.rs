@@ -12,6 +12,10 @@ use serde::ser::{SerializeTuple, SerializeTupleStruct, SerializeTupleVariant};
 use serde::{Serialize, Serializer};
 
 /// Writes a number of columns to a wtr.
+///
+/// ## Arguments
+/// - wtr: The target writer which implements [`io::Write`].
+/// - cnt: The number of columns of a row to be written.
 pub fn write_col_cnt<W>(mut wtr: W, cnt: i16) -> Result<(), io::Error>
 where
     W: io::Write,
