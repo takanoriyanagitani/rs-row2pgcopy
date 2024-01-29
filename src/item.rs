@@ -128,7 +128,11 @@ where
     }
 }
 
-/// Writes a val to a wtr
+/// Writes a val to a wtr.
+///
+/// ## Arguments
+/// - wtr: The target writer which implements [`io::Write`].
+/// - val: The value to write which implenents [`Serialize`].
 pub fn to_writer<W, T>(wtr: W, val: &T) -> Result<(), Error>
 where
     W: io::Write,
