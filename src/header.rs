@@ -1,3 +1,5 @@
+//! Header traits and functions.
+
 use std::io;
 
 /// Writes a PGCOPY header(e.g, PGCOPY\n\xff\d\a\0....)

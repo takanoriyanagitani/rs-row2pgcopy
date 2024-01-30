@@ -1,3 +1,5 @@
+//! Blob structs.
+
 use serde::{Serialize, Serializer};
 
 /// A Blob for PostgreSQL
