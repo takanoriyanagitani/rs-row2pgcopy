@@ -1,3 +1,5 @@
+//! Functions to write columns/rows, etc.
+
 use core::fmt;
 use core::fmt::Display;
 
