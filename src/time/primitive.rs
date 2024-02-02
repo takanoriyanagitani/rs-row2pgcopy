@@ -1,3 +1,5 @@
+//! Struct for TIMESTAMP WITHOUT TIME ZONE
+
 use serde::ser::Error;
 use serde::{Serialize, Serializer};
 
