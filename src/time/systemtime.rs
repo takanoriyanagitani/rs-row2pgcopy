@@ -1,3 +1,5 @@
+//! Struct for TIMESTAMP WITH TIME ZONE
+
 use core::time::Duration;
 
 use std::time::SystemTime;
