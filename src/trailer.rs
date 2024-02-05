@@ -1,3 +1,5 @@
+//! Functions for pgcopy trailer(-1 as i16)
+
 use std::io;
 
 /// Writes trailer bytes(-1 as i16)
