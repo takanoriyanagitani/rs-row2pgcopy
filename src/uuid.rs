@@ -1,3 +1,5 @@
+//! Uuid related structs
+
 use serde::{Serialize, Serializer};
 
 #[derive(Debug)]
