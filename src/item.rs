@@ -79,6 +79,15 @@ where
     }
 }
 
+impl<T> From<PgNumArray<T>> for Vec<T>
+where
+    T: PgNum,
+{
+    fn from(p: PgNumArray<T>) -> Self {
+        p.0
+    }
+}
+
 impl<T> Serialize for PgNumArray<T>
 where
     T: PgNum,
